@@ -1,0 +1,5 @@
+<ng-container *ngFor="let category of service?.categories | async">
+  <div class="categories">
+    <app-category [category]="category"></app-category>
+  </div>
+</ng-container>

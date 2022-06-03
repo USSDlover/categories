@@ -1,19 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {CategoriesPage} from './pages/categories.page';
+import {CategoriesResolve} from './resolvers/categories.resolve';
 
 const routes: Routes = [
   {
     path: '',
-    component: '',
-    children: [
-      {
-        path: ':id',
-        component: '',
-        resolve: {
-          category: '',
-        }
-      }
-    ]
+    component: CategoriesPage,
+    resolve: {
+      categories: CategoriesResolve
+    }
   }
 ];
 
@@ -22,3 +18,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class CategoriesRoutingModule {}
+
+export const RoutedComponents = [CategoriesPage];
+
+export const Resolvers = [CategoriesResolve]

@@ -14,12 +14,14 @@ export class CategoriesService {
   constructor(private http: HttpClient) {
   }
 
-  fetchCategories(): Observable<void> {
+  fetchCategories(): Observable<ICategory[]> {
+    console.log('fetch categories');
     return this.http.get<ICategoryApi[]>(`${this.baseUrl}/data.json`)
       .pipe(
         map((response) => {
           const mappedCategories = response.map(category => (Category.fromJson(category)));
           this.categories$.next(mappedCategories);
+          return mappedCategories;
         }),
         catchError(err => {
           console.error('Got error on getting categories data', err.stack);
