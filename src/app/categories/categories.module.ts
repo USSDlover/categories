@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {AngularMaterialModule} from './angular-material.module';
-import {Resolvers, RoutedComponents} from './categories-routing.module';
+import {CategoriesRoutingModule, Resolvers, RoutedComponents} from './categories-routing.module';
 import {CategoryComponent} from './components/category/category.component';
 import {CommonModule} from '@angular/common';
+import {CategoriesService} from './services/categories.service';
+import {AngularMaterialModule} from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -13,12 +13,13 @@ import {CommonModule} from '@angular/common';
   ],
   imports: [
     CommonModule,
-    RouterModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    CategoriesRoutingModule
   ],
   providers: [
-    ...Resolvers
+    ...Resolvers,
+    CategoriesService
   ]
 })
 export class CategoriesModule {}
